@@ -1,17 +1,22 @@
 
+/*
+  array of images
+*/
+
 let images = ['pictures/1.png','pictures/10.png','pictures/11.png',
 'pictures/12.png','pictures/2.png','pictures/3.png',
 'pictures/4.png','pictures/5.png','pictures/6.png',
 'pictures/7.png','pictures/8.png','pictures/9.png'
 ];
 
-(() => {
-  renderImgs();
-
-})()
-
+/*
+  variable which will bet set to our clicked
+  image
+*/
 let dragged;
 
+
+//loop thru images array and append to container
 function renderImgs() {
   document.getElementById('mainDisplay').innerHTML = '';
   images.forEach((image) => {
@@ -22,31 +27,64 @@ function renderImgs() {
   })
 }
 
-//listen for start of drag event on DOM event
+/*
+  Handle Image insertion
+
+*/
+function insertImage() {
+  let path = getLocalPath(event);
+  let draggedPath = getLocalPath(dragged);
+  let idx = images.indexOf(path);
+  let draggedIdx = images.indexOf(draggedPath)
+  images.splice(draggedIdx, 1);
+  images.splice(idx, 0, draggedPath);
+
+}
+
+/*
+parse path from click handler
+into relative path
+*/
+function getLocalPath(event) {
+
+  let path = event.target.src.split('ImageViewer/');
+  let relPath = path[path.length - 1];
+  return relPath;
+}
+
+
+/*
+  Event Listeners
+
+*/
  document.addEventListener('dragstart',
     (event) => {
-      dragged = event.target;
+      dragged = event;
       console.log(event.target);
     });
-
-//when we drag over an event prevent
-//default to allow a 'drop'
+/*
+when we drag over an event prevent
+default in order to allow a 'drop'
+*/
 document.addEventListener('dragover',
     (event) => {
       event.preventDefault();
     });
 
-
-//listen for drop event
+/*
+  listen for drop event
+  insert the image into the array
+  rerender the list of images
+*/
  document.addEventListener('drop',
     (event) => {
-      console.log('37 dragged ', dragged);
-      console.log('38 event.target: ', event.target);
-      let path = event.target.src.split('ImageViewer/')
-      //images.indexOf(path);
-      let arrayElem = path[path.length - 1];
-      let idx = images.indexOf(arrayElem);
-      images.splice(idx, 0, dragged.src);
-      //images.splice(idx, 1);
+      insertImage(event);
       renderImgs();
     });
+
+/*on page load, load our images into our container
+*/
+(() => {
+  renderImgs();
+})()
+
