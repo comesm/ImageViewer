@@ -15,7 +15,6 @@ let images = ['pictures/1.png','pictures/10.png','pictures/11.png',
 */
 let dragged;
 
-
 //loop thru images array and append to container
 function renderImgs() {
   document.getElementById('mainDisplay').innerHTML = '';
@@ -46,41 +45,38 @@ parse path from click handler
 into relative path
 */
 function getLocalPath(event) {
-
   let path = event.target.src.split('ImageViewer/');
   let relPath = path[path.length - 1];
   return relPath;
 }
 
-
 /*
   Event Listeners
 
 */
- document.addEventListener('dragstart',
-    (event) => {
-      dragged = event;
-      console.log(event.target);
-    });
+document.addEventListener('dragstart',
+  (event) => {
+    dragged = event;
+  });
 /*
 when we drag over an event prevent
 default in order to allow a 'drop'
 */
 document.addEventListener('dragover',
-    (event) => {
-      event.preventDefault();
-    });
+  (event) => {
+    event.preventDefault();
+  });
 
 /*
   listen for drop event
   insert the image into the array
   rerender the list of images
 */
- document.addEventListener('drop',
-    (event) => {
-      insertImage(event);
-      renderImgs();
-    });
+document.addEventListener('drop',
+  (event) => {
+    insertImage(event);
+    renderImgs();
+  });
 
 /*on page load, load our images into our container
 */
