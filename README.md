@@ -1,1 +1,1 @@
-# Coding Challenges
+# The picture viewer

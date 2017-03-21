@@ -1,0 +1,34 @@
+body {
+  font-size: 1.35m;
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: #002841;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+h2 {
+  color: #f05a50;
+  text-align: center;
+}
+
+.container {
+  background: #fff;
+  border-radius: .5em;
+  margin: 10vmin;
+  padding: 1vmin;
+  height: 50vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  align-content: space-between;
+}
+
+
+
+img {
+
+  height: 30vmin;
+  width: 30vmin;
+}
