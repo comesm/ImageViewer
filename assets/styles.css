@@ -14,21 +14,27 @@ h2 {
 .container {
   background: #fff;
   border-radius: .5em;
-  margin: 10vmin;
+  margin: 5vmin;
   padding: 1vmin;
-  height: 50vh;
+  height: 70vh;
+  width: 60vh;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-end;
-  align-content: space-between;
+  justify-content: center;
+  align-items: center;
+
 }
 
+.gallery {
+  height: 60vmin;
+  width: 60vmin;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: flex-start;
 
+}
 
 img {
-
-  height: 30vmin;
-  width: 30vmin;
+  height: 15vmin;
+  width: 15vmin;
 }
